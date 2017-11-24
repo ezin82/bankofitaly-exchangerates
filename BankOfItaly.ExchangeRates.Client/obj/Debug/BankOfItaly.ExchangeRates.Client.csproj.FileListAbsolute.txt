@@ -1,8 +1,0 @@
-C:\GitHub\projects\BankOfItalyExchangeRates\bankofitaly-exchangerates\BankOfItaly.ExchangeRates.Client\obj\Debug\BankOfItaly.ExchangeRates.Client.csprojResolveAssemblyReference.cache
-C:\GitHub\projects\BankOfItalyExchangeRates\bankofitaly-exchangerates\BankOfItaly.ExchangeRates.Client\bin\Debug\BankOfItaly.ExchangeRates.Client.dll.config
-C:\GitHub\projects\BankOfItalyExchangeRates\bankofitaly-exchangerates\BankOfItaly.ExchangeRates.Client\bin\Debug\BankOfItaly.ExchangeRates.Client.dll
-C:\GitHub\projects\BankOfItalyExchangeRates\bankofitaly-exchangerates\BankOfItaly.ExchangeRates.Client\bin\Debug\BankOfItaly.ExchangeRates.Client.pdb
-C:\GitHub\projects\BankOfItalyExchangeRates\bankofitaly-exchangerates\BankOfItaly.ExchangeRates.Client\bin\Debug\Newtonsoft.Json.dll
-C:\GitHub\projects\BankOfItalyExchangeRates\bankofitaly-exchangerates\BankOfItaly.ExchangeRates.Client\bin\Debug\Newtonsoft.Json.xml
-C:\GitHub\projects\BankOfItalyExchangeRates\bankofitaly-exchangerates\BankOfItaly.ExchangeRates.Client\obj\Debug\BankOfItaly.ExchangeRates.Client.dll
-C:\GitHub\projects\BankOfItalyExchangeRates\bankofitaly-exchangerates\BankOfItaly.ExchangeRates.Client\obj\Debug\BankOfItaly.ExchangeRates.Client.pdb
