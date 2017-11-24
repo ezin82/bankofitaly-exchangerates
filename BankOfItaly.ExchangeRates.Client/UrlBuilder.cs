@@ -56,7 +56,7 @@ namespace BankOfItaly.ExchangeRate.Client
         {
             var requestUrl = new StringBuilder();
             requestUrl.Append(endpointBaseUrl);
-            requestUrl.AppendFormat(Currencies, language);
+            requestUrl.AppendFormat(Currencies, language ?? Language.It);
             return requestUrl.ToString();
         }
 
@@ -64,7 +64,7 @@ namespace BankOfItaly.ExchangeRate.Client
         {
             var requestUrl = new StringBuilder();
             requestUrl.Append(endpointBaseUrl);
-            requestUrl.AppendFormat(LatestRates, language);
+            requestUrl.AppendFormat(LatestRates, language ?? Language.It);
             return requestUrl.ToString();
         }
 
@@ -72,7 +72,7 @@ namespace BankOfItaly.ExchangeRate.Client
         {
             var requestUrl = new StringBuilder();
             requestUrl.Append(endpointBaseUrl);
-            requestUrl.AppendFormat(DailyRates, referenceDate, currencyIsoCode, language);
+            requestUrl.AppendFormat(DailyRates, referenceDate, currencyIsoCode, language ?? Language.It);
             AppendBaseCurrencyIsoCode(baseCurrencyIsoCode, requestUrl);
             return requestUrl.ToString();
         }
@@ -81,7 +81,7 @@ namespace BankOfItaly.ExchangeRate.Client
         {
             var requestUrl = new StringBuilder();
             requestUrl.Append(endpointBaseUrl);
-            requestUrl.AppendFormat(MonthlyAverageRates, month, year, currencyIsoCode, language);
+            requestUrl.AppendFormat(MonthlyAverageRates, month, year, currencyIsoCode, language ?? Language.It);
             AppendBaseCurrencyIsoCode(baseCurrencyIsoCode, requestUrl);
             return requestUrl.ToString();
         }
@@ -90,7 +90,7 @@ namespace BankOfItaly.ExchangeRate.Client
         {
             var requestUrl = new StringBuilder();
             requestUrl.Append(endpointBaseUrl);
-            requestUrl.AppendFormat(AnnualAverageRates, year, currencyIsoCode, language);
+            requestUrl.AppendFormat(AnnualAverageRates, year, currencyIsoCode, language ?? Language.It);
             AppendBaseCurrencyIsoCode(baseCurrencyIsoCode, requestUrl);
             return requestUrl.ToString();
         }
@@ -99,7 +99,7 @@ namespace BankOfItaly.ExchangeRate.Client
         {
             var requestUrl = new StringBuilder();
             requestUrl.Append(endpointBaseUrl);
-            requestUrl.AppendFormat(DailyTimeSeries, startDate, endDate, baseCurrencyIsoCode, currencyIsoCode, language);
+            requestUrl.AppendFormat(DailyTimeSeries, startDate, endDate, baseCurrencyIsoCode, currencyIsoCode, language ?? Language.It);
             return requestUrl.ToString();
         }
 
@@ -107,7 +107,7 @@ namespace BankOfItaly.ExchangeRate.Client
         {
             var requestUrl = new StringBuilder();
             requestUrl.Append(endpointBaseUrl);
-            requestUrl.AppendFormat(MonthlyTimeSeries, startMonth, startYear, endMonth, endYear, baseCurrencyIsoCode, currencyIsoCode, language);
+            requestUrl.AppendFormat(MonthlyTimeSeries, startMonth, startYear, endMonth, endYear, baseCurrencyIsoCode, currencyIsoCode, language ?? Language.It);
             return requestUrl.ToString();
         }
 
@@ -115,7 +115,7 @@ namespace BankOfItaly.ExchangeRate.Client
         {
             var requestUrl = new StringBuilder();
             requestUrl.Append(endpointBaseUrl);
-            requestUrl.AppendFormat(AnnualTimeSeries, startYear, endYear, baseCurrencyIsoCode, currencyIsoCode, language);
+            requestUrl.AppendFormat(AnnualTimeSeries, startYear, endYear, baseCurrencyIsoCode, currencyIsoCode, language ?? Language.It);
             return requestUrl.ToString();
         }
     }
