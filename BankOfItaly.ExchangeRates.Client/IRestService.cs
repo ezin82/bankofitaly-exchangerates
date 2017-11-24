@@ -27,14 +27,14 @@ namespace BankOfItaly.ExchangeRate.Client
         /// </summary>
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default. </param>
         /// <returns></returns>
-        CurrenciesResponse GetCurrencies(Language language = Language.It);
+        CurrenciesResponse GetCurrencies(Language language);
 
         /// <summary>
         /// Restituisce l’elenco di tutte le valute , comprese quelle non più quotate.
         /// </summary>
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default. </param>
         /// <returns></returns>
-        Task<CurrenciesResponse> GetCurrenciesAsync(Language language = Language.It);
+        Task<CurrenciesResponse> GetCurrenciesAsync(Language language);
 
         #endregion
 
@@ -44,14 +44,14 @@ namespace BankOfItaly.ExchangeRate.Client
         /// </summary>
         /// <param name="language">Stringa identificativa della lingua in cui si desidera ottenere i dati: può valere  “it” o “en” case insensitive. Se il parametro non viene specificato, o valorizzato in modo errato, i risultati saranno forniti nella lingua di default. </param>
         /// <returns></returns>
-        LatestRatesResponse GetLatestRates(Language language = Language.It);
+        LatestRatesResponse GetLatestRates(Language language);
 
         /// <summary>
         /// Fornisce i cambi, contro Euro e contro dollaro Usa, dell'ultimo giorno per cui sono disponibili le quotazioni tra tutte le valute in corso.
         /// </summary>
         /// <param name="language">Stringa identificativa della lingua in cui si desidera ottenere i dati: può valere  “it” o “en” case insensitive. Se il parametro non viene specificato, o valorizzato in modo errato, i risultati saranno forniti nella lingua di default. </param>
         /// <returns></returns>
-        Task<LatestRatesResponse> GetLatestRatesAsync(Language language = Language.It);
+        Task<LatestRatesResponse> GetLatestRatesAsync(Language language);
 
         /// <summary>
         /// Fornisce i cambi, contro Euro e contro dollaro Usa, dell'ultimo giorno per cui sono disponibili le quotazioni tra tutte le valute in corso.
@@ -59,7 +59,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="fileFormat">Formato del file in output</param>
         /// <param name="outputFilePath">Percorso del file in output</param>
         /// <param name="language">Stringa identificativa della lingua in cui si desidera ottenere i dati: può valere  “it” o “en” case insensitive. Se il parametro non viene specificato, o valorizzato in modo errato, i risultati saranno forniti nella lingua di default. </param>
-        void DownloadLatestRatesFile(FileFormat fileFormat, string outputFilePath, Language language = Language.It);
+        void DownloadLatestRatesFile(FileFormat fileFormat, string outputFilePath, Language language);
 
         /// <summary>
         /// Fornisce i cambi, contro Euro e contro dollaro Usa, dell'ultimo giorno per cui sono disponibili le quotazioni tra tutte le valute in corso.
@@ -67,7 +67,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="fileFormat">Formato del file in output</param>
         /// <param name="outputFilePath">Percorso del file in output</param>
         /// <param name="language">Stringa identificativa della lingua in cui si desidera ottenere i dati: può valere  “it” o “en” case insensitive. Se il parametro non viene specificato, o valorizzato in modo errato, i risultati saranno forniti nella lingua di default. </param>
-        Task DownloadLatestRatesFileAsync(FileFormat fileFormat, string outputFilePath, Language language = Language.It);
+        Task DownloadLatestRatesFileAsync(FileFormat fileFormat, string outputFilePath, Language language);
 
         #endregion
 
@@ -81,7 +81,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default.</param>
         /// <param name="baseCurrencyIsoCode">Codice ISO (case insensitive) della valuta per cui si richiede  la quotazione. Nel caso di più valute il parametro sarà ripetuto.  Se il parametro  non viene passato, si intendono tutte le valute per cui è disponibile la quotazione nella data richiesta. Codici ISO inesistenti verranno scartati. Se tutti i codici ISO inseriti sono inesistenti, verrà restituita una lista vuota.  Se il parametro è specificato in un formato errato, il servizio restituirà un messaggio di errore. </param>
         /// <returns></returns>
-        RatesResponse GetDailyRates(DateTime referenceDate, string currencyIsoCode, Language language = Language.It, string[] baseCurrencyIsoCode = null);
+        RatesResponse GetDailyRates(DateTime referenceDate, string currencyIsoCode, Language language, string[] baseCurrencyIsoCode = null);
 
         /// <summary>
         /// Fornisce i cambi giornalieri per una specifica data, contro Euro o contro Dollaro USA o contro Lira Italiana, di una o più valute richieste, che siano valide e per le quali sia disponibile la quotazione per la data selezionata. E' possibile non specificare le valute desiderate, in tal caso il servizio restituisce tutte le valute quotate. Qualora, per la data e le valute richieste, non esistano quotazioni, il servizio restituisce l'elenco vuoto con un messaggio informativo.   
@@ -91,7 +91,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default.</param>
         /// <param name="baseCurrencyIsoCode">Codice ISO (case insensitive) della valuta per cui si richiede  la quotazione. Nel caso di più valute il parametro sarà ripetuto.  Se il parametro  non viene passato, si intendono tutte le valute per cui è disponibile la quotazione nella data richiesta. Codici ISO inesistenti verranno scartati. Se tutti i codici ISO inseriti sono inesistenti, verrà restituita una lista vuota.  Se il parametro è specificato in un formato errato, il servizio restituirà un messaggio di errore. </param>
         /// <returns></returns>
-        Task<RatesResponse> GetDailyRatesAsync(DateTime referenceDate, string currencyIsoCode, Language language = Language.It, string[] baseCurrencyIsoCode = null);
+        Task<RatesResponse> GetDailyRatesAsync(DateTime referenceDate, string currencyIsoCode, Language language, string[] baseCurrencyIsoCode = null);
 
         /// <summary>
         /// Fornisce i cambi giornalieri per una specifica data, contro Euro o contro Dollaro USA o contro Lira Italiana, di una o più valute richieste, che siano valide e per le quali sia disponibile la quotazione per la data selezionata. E' possibile non specificare le valute desiderate, in tal caso il servizio restituisce tutte le valute quotate. Qualora, per la data e le valute richieste, non esistano quotazioni, il servizio restituisce l'elenco vuoto con un messaggio informativo.  
@@ -100,7 +100,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="currencyIsoCode">Codice ISO (case insensitive) della valuta "contro" cui si vuole la quotazione. Può valere “EUR”, “USD”, “ITL”. Se il parametro non è specificato, o è specificato un valore diverso da quelli validi, il servizio restituirà un messaggio di errore. </param>
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default.</param>
         /// <param name="baseCurrencyIsoCode">Codice ISO (case insensitive) della valuta per cui si richiede  la quotazione. Nel caso di più valute il parametro sarà ripetuto.  Se il parametro  non viene passato, si intendono tutte le valute per cui è disponibile la quotazione nella data richiesta. Codici ISO inesistenti verranno scartati. Se tutti i codici ISO inseriti sono inesistenti, verrà restituita una lista vuota.  Se il parametro è specificato in un formato errato, il servizio restituirà un messaggio di errore. </param>
-        void DownloadDailyRatesFile(FileFormat fileFormat, string outputFilePath, DateTime referenceDate, string currencyIsoCode, Language language = Language.It, string[] baseCurrencyIsoCode = null);
+        void DownloadDailyRatesFile(FileFormat fileFormat, string outputFilePath, DateTime referenceDate, string currencyIsoCode, Language language, string[] baseCurrencyIsoCode = null);
 
         /// <summary>
         /// Fornisce i cambi giornalieri per una specifica data, contro Euro o contro Dollaro USA o contro Lira Italiana, di una o più valute richieste, che siano valide e per le quali sia disponibile la quotazione per la data selezionata. E' possibile non specificare le valute desiderate, in tal caso il servizio restituisce tutte le valute quotate. Qualora, per la data e le valute richieste, non esistano quotazioni, il servizio restituisce l'elenco vuoto con un messaggio informativo.  
@@ -112,7 +112,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default.</param>
         /// <param name="baseCurrencyIsoCode">Codice ISO (case insensitive) della valuta per cui si richiede  la quotazione. Nel caso di più valute il parametro sarà ripetuto.  Se il parametro  non viene passato, si intendono tutte le valute per cui è disponibile la quotazione nella data richiesta. Codici ISO inesistenti verranno scartati. Se tutti i codici ISO inseriti sono inesistenti, verrà restituita una lista vuota.  Se il parametro è specificato in un formato errato, il servizio restituirà un messaggio di errore. </param>
         /// <returns></returns>
-        Task DownloadDailyRatesFileAsync(FileFormat fileFormat, string outputFilePath, DateTime referenceDate, string currencyIsoCode, Language language = Language.It, string[] baseCurrencyIsoCode = null);
+        Task DownloadDailyRatesFileAsync(FileFormat fileFormat, string outputFilePath, DateTime referenceDate, string currencyIsoCode, Language language, string[] baseCurrencyIsoCode = null);
         #endregion
 
 
@@ -126,7 +126,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default.</param>
         /// <param name="baseCurrencyIsoCode">Codice ISO (case insensitive) della valuta per cui si richiede  la quotazione. Nel caso di più valute il parametro sarà ripetuto.  Se il parametro  non viene passato, si intendono tutte le valute per cui è disponibile la quotazione nella data richiesta. Codici ISO inesistenti verranno scartati. Se tutti i codici ISO inseriti sono inesistenti, verrà restituita una lista vuota.  Se il parametro è specificato in un formato errato, il servizio restituirà un messaggio di errore</param>
         /// <returns></returns>
-        RatesResponse GetMonthlyAverageRates(int month, int year, string currencyIsoCode, Language language = Language.It, string[] baseCurrencyIsoCode = null);
+        RatesResponse GetMonthlyAverageRates(int month, int year, string currencyIsoCode, Language language, string[] baseCurrencyIsoCode = null);
 
         /// <summary>
         /// Fornisce i cambi medi mensili per uno specifico mese/anno, contro Euro o contro Dollaro USA o contro Lira Italiana, di una o più  valute richieste, che siano valide e per le quali sia disponibile la quotazione. E' possibile non specificare le valute desiderate, in tal caso il servizio restituisce tutte le valute quotate. Qualora, per il mese e le valute richieste, non esistano quotazioni, il servizio restituirà un elenco vuoto. 
@@ -137,7 +137,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default.</param>
         /// <param name="baseCurrencyIsoCode">Codice ISO (case insensitive) della valuta per cui si richiede  la quotazione. Nel caso di più valute il parametro sarà ripetuto.  Se il parametro  non viene passato, si intendono tutte le valute per cui è disponibile la quotazione nella data richiesta. Codici ISO inesistenti verranno scartati. Se tutti i codici ISO inseriti sono inesistenti, verrà restituita una lista vuota.  Se il parametro è specificato in un formato errato, il servizio restituirà un messaggio di errore</param>
         /// <returns></returns>
-        Task<RatesResponse> GetMonthlyAverageRatesAsync(int month, int year, string currencyIsoCode, Language language = Language.It, string[] baseCurrencyIsoCode = null);
+        Task<RatesResponse> GetMonthlyAverageRatesAsync(int month, int year, string currencyIsoCode, Language language, string[] baseCurrencyIsoCode = null);
 
         /// <summary>
         /// Fornisce i cambi medi mensili per uno specifico mese/anno, contro Euro o contro Dollaro USA o contro Lira Italiana, di una o più  valute richieste, che siano valide e per le quali sia disponibile la quotazione. E' possibile non specificare le valute desiderate, in tal caso il servizio restituisce tutte le valute quotate. Qualora, per il mese e le valute richieste, non esistano quotazioni, il servizio restituirà un elenco vuoto. 
@@ -149,7 +149,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="currencyIsoCode">Codice ISO (case insensitive) della valuta "contro" cui si vuole la quotazione. Può valere “EUR”, “USD”, “ITL”. Se il parametro non è specificato, o è specificato un valore diverso da quelli validi, il servizio restituirà un messaggio di errore.</param>
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default.</param>
         /// <param name="baseCurrencyIsoCode">Codice ISO (case insensitive) della valuta per cui si richiede  la quotazione. Nel caso di più valute il parametro sarà ripetuto.  Se il parametro  non viene passato, si intendono tutte le valute per cui è disponibile la quotazione nella data richiesta. Codici ISO inesistenti verranno scartati. Se tutti i codici ISO inseriti sono inesistenti, verrà restituita una lista vuota.  Se il parametro è specificato in un formato errato, il servizio restituirà un messaggio di errore</param>
-        void DownloadMonthlyAverageRatesFile(FileFormat fileFormat, string outputFilePath, int month, int year, string currencyIsoCode, Language language = Language.It, string[] baseCurrencyIsoCode = null);
+        void DownloadMonthlyAverageRatesFile(FileFormat fileFormat, string outputFilePath, int month, int year, string currencyIsoCode, Language language, string[] baseCurrencyIsoCode = null);
 
         /// <summary>
         /// Fornisce i cambi medi mensili per uno specifico mese/anno, contro Euro o contro Dollaro USA o contro Lira Italiana, di una o più  valute richieste, che siano valide e per le quali sia disponibile la quotazione. E' possibile non specificare le valute desiderate, in tal caso il servizio restituisce tutte le valute quotate. Qualora, per il mese e le valute richieste, non esistano quotazioni, il servizio restituirà un elenco vuoto. 
@@ -162,7 +162,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default.</param>
         /// <param name="baseCurrencyIsoCode">Codice ISO (case insensitive) della valuta per cui si richiede  la quotazione. Nel caso di più valute il parametro sarà ripetuto.  Se il parametro  non viene passato, si intendono tutte le valute per cui è disponibile la quotazione nella data richiesta. Codici ISO inesistenti verranno scartati. Se tutti i codici ISO inseriti sono inesistenti, verrà restituita una lista vuota.  Se il parametro è specificato in un formato errato, il servizio restituirà un messaggio di errore</param>
         /// <returns></returns>
-        Task DownloadMonthlyAverageRatesFileAsync(FileFormat fileFormat, string outputFilePath, int month, int year, string currencyIsoCode, Language language = Language.It, string[] baseCurrencyIsoCode = null);
+        Task DownloadMonthlyAverageRatesFileAsync(FileFormat fileFormat, string outputFilePath, int month, int year, string currencyIsoCode, Language language, string[] baseCurrencyIsoCode = null);
         #endregion
 
         #region annualAverageRates
@@ -174,7 +174,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default. </param>
         /// <param name="baseCurrencyIsoCode">Codice ISO(case insensitive) della valuta per cui si richiede  la quotazione.Nel caso di più valute il parametro sarà ripetuto.  Se il parametro non viene passato, si intendono tutte le valute per cui è disponibile la quotazione nella data richiesta. Codici ISO inesistenti verranno scartati.Se tutti i codici ISO inseriti sono inesistenti, verrà restituita una lista vuota.Se il parametro è specificato in un formato errato, il servizio restituirà un messaggio di errore</param>
         /// <returns></returns>
-        RatesResponse GetAnnualAverageRates(int year, string currencyIsoCode, Language language = Language.It, string[] baseCurrencyIsoCode = null);
+        RatesResponse GetAnnualAverageRates(int year, string currencyIsoCode, Language language, string[] baseCurrencyIsoCode = null);
 
         /// <summary>
         /// Fornisce i cambi medi annuali per uno specifico anno, contro Euro o contro Dollaro USA o contro Lira Italiana, di una o più  valute richieste, che siano valide e per le quali sia disponibile la quotazione per il mese selezionato.  E' possibile non specificare le valute desiderate, in tal caso il servizio restituisce tutte le valute quotate. Qualora, per l’anno e le valute richieste, non esistano quotazioni, il servizio restituirà un elenco vuoto.
@@ -184,7 +184,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default. </param>
         /// <param name="baseCurrencyIsoCode">Codice ISO(case insensitive) della valuta per cui si richiede  la quotazione.Nel caso di più valute il parametro sarà ripetuto.  Se il parametro non viene passato, si intendono tutte le valute per cui è disponibile la quotazione nella data richiesta. Codici ISO inesistenti verranno scartati.Se tutti i codici ISO inseriti sono inesistenti, verrà restituita una lista vuota.Se il parametro è specificato in un formato errato, il servizio restituirà un messaggio di errore</param>
         /// <returns></returns>
-        Task<RatesResponse> GetAnnualAverageRatesAsync(int year, string currencyIsoCode, Language language = Language.It, string[] baseCurrencyIsoCode = null);
+        Task<RatesResponse> GetAnnualAverageRatesAsync(int year, string currencyIsoCode, Language language, string[] baseCurrencyIsoCode = null);
 
         /// <summary>
         /// Fornisce i cambi medi annuali per uno specifico anno, contro Euro o contro Dollaro USA o contro Lira Italiana, di una o più  valute richieste, che siano valide e per le quali sia disponibile la quotazione per il mese selezionato.  E' possibile non specificare le valute desiderate, in tal caso il servizio restituisce tutte le valute quotate. Qualora, per l’anno e le valute richieste, non esistano quotazioni, il servizio restituirà un elenco vuoto.
@@ -195,7 +195,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="currencyIsoCode">Codice ISO (case insensitive) della valuta "contro" cui si vuole la quotazione. Può valere “EUR”, “USD”, “ITL”. Se il parametro non è specificato, o è specificato un valore diverso da quelli validi, il servizio restituirà un messaggio di errore.</param>
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default. </param>
         /// <param name="baseCurrencyIsoCode">Codice ISO(case insensitive) della valuta per cui si richiede  la quotazione.Nel caso di più valute il parametro sarà ripetuto.  Se il parametro non viene passato, si intendono tutte le valute per cui è disponibile la quotazione nella data richiesta. Codici ISO inesistenti verranno scartati.Se tutti i codici ISO inseriti sono inesistenti, verrà restituita una lista vuota.Se il parametro è specificato in un formato errato, il servizio restituirà un messaggio di errore</param>
-        void DownloadAnnualAverageRatesFile(FileFormat fileFormat, string outputFilePath, int year, string currencyIsoCode, Language language = Language.It, string[] baseCurrencyIsoCode = null);
+        void DownloadAnnualAverageRatesFile(FileFormat fileFormat, string outputFilePath, int year, string currencyIsoCode, Language language, string[] baseCurrencyIsoCode = null);
 
         /// <summary>
         /// Fornisce i cambi medi annuali per uno specifico anno, contro Euro o contro Dollaro USA o contro Lira Italiana, di una o più  valute richieste, che siano valide e per le quali sia disponibile la quotazione per il mese selezionato.  E' possibile non specificare le valute desiderate, in tal caso il servizio restituisce tutte le valute quotate. Qualora, per l’anno e le valute richieste, non esistano quotazioni, il servizio restituirà un elenco vuoto.
@@ -207,7 +207,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default. </param>
         /// <param name="baseCurrencyIsoCode">Codice ISO(case insensitive) della valuta per cui si richiede  la quotazione.Nel caso di più valute il parametro sarà ripetuto.  Se il parametro non viene passato, si intendono tutte le valute per cui è disponibile la quotazione nella data richiesta. Codici ISO inesistenti verranno scartati.Se tutti i codici ISO inseriti sono inesistenti, verrà restituita una lista vuota.Se il parametro è specificato in un formato errato, il servizio restituirà un messaggio di errore</param>
         /// <returns></returns>
-        Task DownloadAnnualAverageRatesFileAsync(FileFormat fileFormat, string outputFilePath, int year, string currencyIsoCode, Language language = Language.It, string[] baseCurrencyIsoCode = null);
+        Task DownloadAnnualAverageRatesFileAsync(FileFormat fileFormat, string outputFilePath, int year, string currencyIsoCode, Language language, string[] baseCurrencyIsoCode = null);
         #endregion
 
 
@@ -222,7 +222,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="currencyIsoCode">Codice ISO (case insensitive) della valuta "contro" cui si vuole la quotazione. Può valere “EUR”, “USD”, “ITL”. Se il parametro non è specificato, o è specificato un valore diverso da quelli validi, il servizio restituirà un messaggio di errore.</param>
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default</param>
         /// <returns></returns>
-        RatesResponse GetDailyTimeSeries(DateTime startDate, DateTime endDate, string baseCurrencyIsoCode, string currencyIsoCode, Language language = Language.It);
+        RatesResponse GetDailyTimeSeries(DateTime startDate, DateTime endDate, string baseCurrencyIsoCode, string currencyIsoCode, Language language);
 
         /// <summary>
         /// Fornisce i cambi giornalieri di una  valuta per un intervallo di date specificato. La valuta controvalore può essere Euro, Dollaro USA o Lira Italiana. In assenza di quotazioni per l'intervallo fornito, il servizio restituirà un elenco vuoto. La data di fine  non può essere antecedente quella di inizio, altrimenti sarà restituito un messaggio di errore.  
@@ -234,7 +234,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="currencyIsoCode">Codice ISO (case insensitive) della valuta "contro" cui si vuole la quotazione. Può valere “EUR”, “USD”, “ITL”. Se il parametro non è specificato, o è specificato un valore diverso da quelli validi, il servizio restituirà un messaggio di errore.</param>
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default</param>
         /// <returns></returns>
-        Task<RatesResponse> GetDailyTimeSeriesAsync(DateTime startDate, DateTime endDate, string baseCurrencyIsoCode, string currencyIsoCode, Language language = Language.It);
+        Task<RatesResponse> GetDailyTimeSeriesAsync(DateTime startDate, DateTime endDate, string baseCurrencyIsoCode, string currencyIsoCode, Language language);
 
         /// <summary>
         /// Fornisce i cambi giornalieri di una  valuta per un intervallo di date specificato. La valuta controvalore può essere Euro, Dollaro USA o Lira Italiana. In assenza di quotazioni per l'intervallo fornito, il servizio restituirà un elenco vuoto. La data di fine  non può essere antecedente quella di inizio, altrimenti sarà restituito un messaggio di errore.  
@@ -247,7 +247,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="baseCurrencyIsoCode">Codice ISO (case insensitive) della valuta per cui si richiede  la quotazione. Se il codice ISO inserito è inesistente verrà restituita una lista vuota.  Se il parametro è specificato in un formato errato, il servizio restituirà un messaggio di errore.</param>
         /// <param name="currencyIsoCode">Codice ISO (case insensitive) della valuta "contro" cui si vuole la quotazione. Può valere “EUR”, “USD”, “ITL”. Se il parametro non è specificato, o è specificato un valore diverso da quelli validi, il servizio restituirà un messaggio di errore.</param>
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default</param>
-        void DownloadDailyTimeSeriesFile(FileFormat fileFormat, string outputFilePath, DateTime startDate, DateTime endDate, string baseCurrencyIsoCode, string currencyIsoCode, Language language = Language.It);
+        void DownloadDailyTimeSeriesFile(FileFormat fileFormat, string outputFilePath, DateTime startDate, DateTime endDate, string baseCurrencyIsoCode, string currencyIsoCode, Language language);
 
         /// <summary>
         /// Fornisce i cambi giornalieri di una  valuta per un intervallo di date specificato. La valuta controvalore può essere Euro, Dollaro USA o Lira Italiana. In assenza di quotazioni per l'intervallo fornito, il servizio restituirà un elenco vuoto. La data di fine  non può essere antecedente quella di inizio, altrimenti sarà restituito un messaggio di errore.  
@@ -261,7 +261,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="currencyIsoCode">Codice ISO (case insensitive) della valuta "contro" cui si vuole la quotazione. Può valere “EUR”, “USD”, “ITL”. Se il parametro non è specificato, o è specificato un valore diverso da quelli validi, il servizio restituirà un messaggio di errore.</param>
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default</param>
         /// <returns></returns>
-        Task DownloadDailyTimeSeriesFileAsync(FileFormat fileFormat, string outputFilePath, DateTime startDate, DateTime endDate, string baseCurrencyIsoCode, string currencyIsoCode, Language language = Language.It);
+        Task DownloadDailyTimeSeriesFileAsync(FileFormat fileFormat, string outputFilePath, DateTime startDate, DateTime endDate, string baseCurrencyIsoCode, string currencyIsoCode, Language language);
 
         #endregion
 
@@ -278,7 +278,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="currencyIsoCode">Codice ISO (case insensitive) della valuta "contro" cui si vuole la quotazione. Può valere “EUR”, “USD”, “ITL”. Se il parametro non è specificato, o è specificato un valore diverso da quelli validi, il servizio restituirà un messaggio di errore.</param>
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default.</param>
         /// <returns></returns>
-        RatesResponse GetMonthlyTimeSeries(int startMonth, int startYear, int endMonth, int endYear, string baseCurrencyIsoCode, string currencyIsoCode, Language language = Language.It);
+        RatesResponse GetMonthlyTimeSeries(int startMonth, int startYear, int endMonth, int endYear, string baseCurrencyIsoCode, string currencyIsoCode, Language language);
 
         /// <summary>
         /// Fornisce i cambi medi mensili di una valuta per un intervallo di mesi specificato.La valuta controvalore può essere Euro, Dollaro USA o Lira Italiana.In assenza di quotazioni per l'intervallo fornito, il servizio restituirà un elenco vuoto. Il mese di inizio non può essere successivo a quello finale, altrimenti sarà restituito un messaggio di errore.  
@@ -291,7 +291,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="currencyIsoCode">Codice ISO (case insensitive) della valuta "contro" cui si vuole la quotazione. Può valere “EUR”, “USD”, “ITL”. Se il parametro non è specificato, o è specificato un valore diverso da quelli validi, il servizio restituirà un messaggio di errore.</param>
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default.</param>
         /// <returns></returns>
-        Task<RatesResponse> GetMonthlyTimeSeriesAsync(int startMonth, int startYear, int endMonth, int endYear, string baseCurrencyIsoCode, string currencyIsoCode, Language language = Language.It);
+        Task<RatesResponse> GetMonthlyTimeSeriesAsync(int startMonth, int startYear, int endMonth, int endYear, string baseCurrencyIsoCode, string currencyIsoCode, Language language);
 
         /// <summary>
         /// Fornisce i cambi medi mensili di una valuta per un intervallo di mesi specificato.La valuta controvalore può essere Euro, Dollaro USA o Lira Italiana.In assenza di quotazioni per l'intervallo fornito, il servizio restituirà un elenco vuoto. Il mese di inizio non può essere successivo a quello finale, altrimenti sarà restituito un messaggio di errore.  
@@ -305,7 +305,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="baseCurrencyIsoCode">Codice ISO (case insensitive) della valuta per cui si richiede  la quotazione. Se il codice ISO inserito è inesistente verrà restituita una lista vuota.  Se il parametro è specificato in un formato errato, il servizio restituirà un messaggio di errore. </param>
         /// <param name="currencyIsoCode">Codice ISO (case insensitive) della valuta "contro" cui si vuole la quotazione. Può valere “EUR”, “USD”, “ITL”. Se il parametro non è specificato, o è specificato un valore diverso da quelli validi, il servizio restituirà un messaggio di errore.</param>
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default.</param>
-        void DownloadMonthlyTimeSeriesFile(FileFormat fileFormat, string outputFilePath, int startMonth, int startYear, int endMonth, int endYear, string baseCurrencyIsoCode, string currencyIsoCode, Language language = Language.It);
+        void DownloadMonthlyTimeSeriesFile(FileFormat fileFormat, string outputFilePath, int startMonth, int startYear, int endMonth, int endYear, string baseCurrencyIsoCode, string currencyIsoCode, Language language);
 
         /// <summary>
         /// Fornisce i cambi medi mensili di una valuta per un intervallo di mesi specificato.La valuta controvalore può essere Euro, Dollaro USA o Lira Italiana.In assenza di quotazioni per l'intervallo fornito, il servizio restituirà un elenco vuoto. Il mese di inizio non può essere successivo a quello finale, altrimenti sarà restituito un messaggio di errore.  
@@ -320,7 +320,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="currencyIsoCode">Codice ISO (case insensitive) della valuta "contro" cui si vuole la quotazione. Può valere “EUR”, “USD”, “ITL”. Se il parametro non è specificato, o è specificato un valore diverso da quelli validi, il servizio restituirà un messaggio di errore.</param>
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default.</param>
         /// <returns></returns>
-        Task DownloadMonthlyTimeSeriesFileAsync(FileFormat fileFormat, string outputFilePath, int startMonth, int startYear, int endMonth, int endYear, string baseCurrencyIsoCode, string currencyIsoCode, Language language = Language.It);
+        Task DownloadMonthlyTimeSeriesFileAsync(FileFormat fileFormat, string outputFilePath, int startMonth, int startYear, int endMonth, int endYear, string baseCurrencyIsoCode, string currencyIsoCode, Language language);
         #endregion
 
 
@@ -334,7 +334,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="currencyIsoCode">Codice ISO (case insensitive) della valuta "contro" cui si vuole la quotazione. Può valere “EUR”, “USD”, “ITL”. Se il parametro non è specificato, o è specificato un valore diverso da quelli validi, il servizio restituirà un messaggio di errore. </param>
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default. </param>
         /// <returns></returns>
-        RatesResponse GetAnnualTimeSeries(int startYear, int endYear, string baseCurrencyIsoCode, string currencyIsoCode, Language language = Language.It);
+        RatesResponse GetAnnualTimeSeries(int startYear, int endYear, string baseCurrencyIsoCode, string currencyIsoCode, Language language);
 
         /// <summary>
         /// Fornisce i cambi medi annuali di una valuta, per un intervallo di anni specificato. La valuta controvalore può essere Euro, Dollaro USA o Lira Italiana. In assenza di quotazioni per l'intervallo fornito, il servizio restituirà un elenco vuoto. L’anno di inizio non può essere successivo a quello finale, altrimenti sarà restituito un messaggio di errore.
@@ -345,7 +345,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="currencyIsoCode">Codice ISO (case insensitive) della valuta "contro" cui si vuole la quotazione. Può valere “EUR”, “USD”, “ITL”. Se il parametro non è specificato, o è specificato un valore diverso da quelli validi, il servizio restituirà un messaggio di errore. </param>
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default. </param>
         /// <returns></returns>
-        Task<RatesResponse> GetAnnualTimeSeriesAsync(int startYear, int endYear, string baseCurrencyIsoCode, string currencyIsoCode, Language language = Language.It);
+        Task<RatesResponse> GetAnnualTimeSeriesAsync(int startYear, int endYear, string baseCurrencyIsoCode, string currencyIsoCode, Language language);
 
         /// <summary>
         /// Fornisce i cambi medi annuali di una valuta, per un intervallo di anni specificato. La valuta controvalore può essere Euro, Dollaro USA o Lira Italiana. In assenza di quotazioni per l'intervallo fornito, il servizio restituirà un elenco vuoto. L’anno di inizio non può essere successivo a quello finale, altrimenti sarà restituito un messaggio di errore.
@@ -357,7 +357,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="baseCurrencyIsoCode">Codice ISO (case insensitive) della valuta per cui si richiede  la quotazione. Se il codice ISO inserito è inesistente verrà restituita una lista vuota.  Se il parametro è specificato in un formato errato, il servizio restituirà un messaggio di errore. </param>
         /// <param name="currencyIsoCode">Codice ISO (case insensitive) della valuta "contro" cui si vuole la quotazione. Può valere “EUR”, “USD”, “ITL”. Se il parametro non è specificato, o è specificato un valore diverso da quelli validi, il servizio restituirà un messaggio di errore. </param>
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default. </param>
-        void DownloadAnnualTimeSeriesFile(FileFormat fileFormat, string outputFilePath, int startYear, int endYear, string baseCurrencyIsoCode, string currencyIsoCode, Language language = Language.It);
+        void DownloadAnnualTimeSeriesFile(FileFormat fileFormat, string outputFilePath, int startYear, int endYear, string baseCurrencyIsoCode, string currencyIsoCode, Language language);
 
         /// <summary>
         /// Fornisce i cambi medi annuali di una valuta, per un intervallo di anni specificato. La valuta controvalore può essere Euro, Dollaro USA o Lira Italiana. In assenza di quotazioni per l'intervallo fornito, il servizio restituirà un elenco vuoto. L’anno di inizio non può essere successivo a quello finale, altrimenti sarà restituito un messaggio di errore.
@@ -370,7 +370,7 @@ namespace BankOfItaly.ExchangeRate.Client
         /// <param name="currencyIsoCode">Codice ISO (case insensitive) della valuta "contro" cui si vuole la quotazione. Può valere “EUR”, “USD”, “ITL”. Se il parametro non è specificato, o è specificato un valore diverso da quelli validi, il servizio restituirà un messaggio di errore. </param>
         /// <param name="language">Lingua in cui si desidera ottenere i dati: può valere  “it” o “en” (case insensitive). Se il parametro non viene specificato, o viene valorizzato in modo errato, i risultati saranno forniti nella lingua di default. </param>
         /// <returns></returns>
-        Task DownloadAnnualTimeSeriesFileAsync(FileFormat fileFormat, string outputFilePath, int startYear, int endYear, string baseCurrencyIsoCode, string currencyIsoCode, Language language = Language.It);
+        Task DownloadAnnualTimeSeriesFileAsync(FileFormat fileFormat, string outputFilePath, int startYear, int endYear, string baseCurrencyIsoCode, string currencyIsoCode, Language language);
 
         #endregion
     }

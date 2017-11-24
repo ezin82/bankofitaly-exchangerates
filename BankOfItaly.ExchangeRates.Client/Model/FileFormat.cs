@@ -13,12 +13,12 @@ namespace BankOfItaly.ExchangeRate.Client.Model
         public static readonly FileFormat Pdf = new FileFormat("application/pdf");
         public static readonly FileFormat Xls = new FileFormat("application/vnd.ms-excel");
 
-        internal readonly string Accept;
-
+        private readonly string accept;
+        internal string Accept { get { return this.accept; } }
         // Constructor is private: values are defined within this class only!
         private FileFormat(string accept)
         {
-            Accept = accept;
+            this.accept = accept;
         }
     }
 }

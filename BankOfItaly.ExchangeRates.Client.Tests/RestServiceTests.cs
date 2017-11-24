@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using BankOfItaly.ExchangeRate.Client.Model;
 
 namespace BankOfItaly.ExchangeRate.Client.Tests
 {
@@ -100,7 +101,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
         public void GetCurrenciesTest()
         {
             var service = RestServiceFactory.Create();
-            var currencies = service.GetCurrencies();
+            var currencies = service.GetCurrencies(Language.It);
             AssertValidCurrenciesResponse(currencies);
         }
 
@@ -108,7 +109,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
         public void GetCurrenciesAsyncTest()
         {
             var service = RestServiceFactory.Create();
-            var task = service.GetCurrenciesAsync();
+            var task = service.GetCurrenciesAsync(Language.It);
             task.Wait();
             Assert.IsTrue(task.IsCompleted);
             if (task.IsCompleted)
@@ -122,7 +123,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
         public void GetLatestRatesTest()
         {
             var service = RestServiceFactory.Create();
-            var rates = service.GetLatestRates();
+            var rates = service.GetLatestRates(Language.It);
             AssertValidLatestRatesResponse(rates);
         }
 
@@ -131,7 +132,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
         public void GetLatestRatesAsyncTest()
         {
             var service = RestServiceFactory.Create();
-            var task = service.GetLatestRatesAsync();
+            var task = service.GetLatestRatesAsync(Language.It);
             task.Wait();
             Assert.IsTrue(task.IsCompleted);
             if (task.IsCompleted)
@@ -145,7 +146,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
         {
             var service = RestServiceFactory.Create();
             var filePath = GetTemporaryFilePath("DownloadLatestRatesFile.csv");
-            service.DownloadLatestRatesFile(Model.FileFormat.Csv, filePath);
+            service.DownloadLatestRatesFile(Model.FileFormat.Csv, filePath, Language.It);
             AssertFile(filePath);
         }
 
@@ -155,7 +156,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
         {
             var service = RestServiceFactory.Create();
             var filePath = GetTemporaryFilePath("DownloadLatestRatesFileAsync.csv");
-            var task = service.DownloadLatestRatesFileAsync(Model.FileFormat.Csv, filePath);
+            var task = service.DownloadLatestRatesFileAsync(Model.FileFormat.Csv, filePath, Language.It);
             AssertTaskDownloadFile(filePath, task);
         }
 
@@ -163,7 +164,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
         public void GetDailyRatesTest()
         {
             var service = RestServiceFactory.Create();
-            var rates = service.GetDailyRates(GetValidRatesDate(), "EUR");
+            var rates = service.GetDailyRates(GetValidRatesDate(), "EUR", Language.It);
             AssertValidRatesResponse(rates);
         }
 
@@ -171,7 +172,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
         public void GetDailyRatesAsyncTest()
         {
             var service = RestServiceFactory.Create();
-            var task = service.GetDailyRatesAsync(GetValidRatesDate(), "EUR");
+            var task = service.GetDailyRatesAsync(GetValidRatesDate(), "EUR", Language.It);
             AssertTaskRatesResponse(task);
         }
 
@@ -180,7 +181,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
         {
             var service = RestServiceFactory.Create();
             var filePath = GetTemporaryFilePath("DownloadDailyRatesFileTest.csv");
-            service.DownloadDailyRatesFile(Model.FileFormat.Csv, filePath, GetValidRatesDate(), "EUR");
+            service.DownloadDailyRatesFile(Model.FileFormat.Csv, filePath, GetValidRatesDate(), "EUR", Language.It);
             AssertFile(filePath);
         }
 
@@ -189,7 +190,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
         {
             var service = RestServiceFactory.Create();
             var filePath = GetTemporaryFilePath("DownloadDailyRatesFileTest.pdf");
-            service.DownloadDailyRatesFile(Model.FileFormat.Pdf, filePath, GetValidRatesDate(), "EUR");
+            service.DownloadDailyRatesFile(Model.FileFormat.Pdf, filePath, GetValidRatesDate(), "EUR", Language.It);
             AssertFile(filePath);
         }
 
@@ -198,7 +199,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
         {
             var service = RestServiceFactory.Create();
             var filePath = GetTemporaryFilePath("DownloadDailyRatesFileTest.xls");
-            service.DownloadDailyRatesFile(Model.FileFormat.Xls, filePath, DateTime.Now, "EUR");
+            service.DownloadDailyRatesFile(Model.FileFormat.Xls, filePath, DateTime.Now, "EUR", Language.It);
             AssertFile(filePath);
         }
 
@@ -207,7 +208,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
         {
             var service = RestServiceFactory.Create();
             var filePath = GetTemporaryFilePath("DownloadDailyRatesFileTestAsync.csv");
-            var task = service.DownloadDailyRatesFileAsync(Model.FileFormat.Csv, filePath, DateTime.Now, "EUR");
+            var task = service.DownloadDailyRatesFileAsync(Model.FileFormat.Csv, filePath, DateTime.Now, "EUR", Language.It);
             AssertTaskDownloadFile(filePath, task);
         }
 
@@ -216,7 +217,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
         {
             var service = RestServiceFactory.Create();
             var date = GetDateOfPreviousMonth();
-            var rates = service.GetMonthlyAverageRates(date.Month, date.Year, "EUR");
+            var rates = service.GetMonthlyAverageRates(date.Month, date.Year, "EUR", Language.It);
             AssertValidRatesResponse(rates);
         }
 
@@ -226,7 +227,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
         {
             var service = RestServiceFactory.Create();
             var date = GetDateOfPreviousMonth();
-            var task = service.GetMonthlyAverageRatesAsync(date.Month, date.Year, "EUR");
+            var task = service.GetMonthlyAverageRatesAsync(date.Month, date.Year, "EUR", Language.It);
             AssertTaskRatesResponse(task);
         }
 
@@ -237,7 +238,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
             var service = RestServiceFactory.Create();
             var filePath = GetTemporaryFilePath("DownloadMonthlyAverageRatesFileTest.csv");
             var date = GetDateOfPreviousMonth();
-            service.DownloadMonthlyAverageRatesFile(Model.FileFormat.Csv, filePath, date.Month, date.Year, "EUR");
+            service.DownloadMonthlyAverageRatesFile(Model.FileFormat.Csv, filePath, date.Month, date.Year, "EUR", Language.It);
             AssertFile(filePath);
         }
 
@@ -247,7 +248,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
             var service = RestServiceFactory.Create();
             var filePath = GetTemporaryFilePath("DownloadMonthlyAverageRatesFileAsync.csv");
             var date = GetDateOfPreviousMonth();
-            var task = service.DownloadMonthlyAverageRatesFileAsync(Model.FileFormat.Csv, filePath, date.Month, date.Year, "EUR");
+            var task = service.DownloadMonthlyAverageRatesFileAsync(Model.FileFormat.Csv, filePath, date.Month, date.Year, "EUR", Language.It);
             AssertTaskDownloadFile(filePath, task);
         }
 
@@ -256,7 +257,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
         {
             var service = RestServiceFactory.Create();
             var date = GetDateOfPreviousYear();
-            var rates = service.GetAnnualAverageRates(date.Year, "EUR");
+            var rates = service.GetAnnualAverageRates(date.Year, "EUR", Language.It);
             AssertValidRatesResponse(rates);
         }
 
@@ -265,7 +266,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
         {
             var service = RestServiceFactory.Create();
             var date = GetDateOfPreviousYear();
-            var task = service.GetAnnualAverageRatesAsync(date.Year, "EUR");
+            var task = service.GetAnnualAverageRatesAsync(date.Year, "EUR", Language.It);
             AssertTaskRatesResponse(task);
         }
 
@@ -275,7 +276,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
             var service = RestServiceFactory.Create();
             var filePath = GetTemporaryFilePath("DownloadAnnualAverageRatesFileTest.csv");
             var date = GetDateOfPreviousYear();
-            service.DownloadAnnualAverageRatesFile(Model.FileFormat.Csv, filePath, date.Year, "EUR");
+            service.DownloadAnnualAverageRatesFile(Model.FileFormat.Csv, filePath, date.Year, "EUR", Language.It);
             AssertFile(filePath);
         }
 
@@ -285,7 +286,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
             var service = RestServiceFactory.Create();
             var filePath = GetTemporaryFilePath("DownloadAnnualAverageRatesFileAsyncTest.csv");
             var date = GetDateOfPreviousYear();
-            var task = service.DownloadAnnualAverageRatesFileAsync(Model.FileFormat.Csv, filePath, date.Year, "EUR");
+            var task = service.DownloadAnnualAverageRatesFileAsync(Model.FileFormat.Csv, filePath, date.Year, "EUR", Language.It);
             AssertTaskDownloadFile(filePath, task);
         }
 
@@ -295,7 +296,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
             var service = RestServiceFactory.Create();
             var endDate  = GetDateOfPreviousMonth();
             var startDate = endDate.AddDays(-60);
-            var rates = service.GetDailyTimeSeries(startDate, endDate, "GBP", "EUR");
+            var rates = service.GetDailyTimeSeries(startDate, endDate, "GBP", "EUR", Language.It);
             AssertValidRatesResponse(rates);
         }
 
@@ -305,7 +306,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
             var service = RestServiceFactory.Create();
             var endDate = GetDateOfPreviousMonth();
             var startDate = endDate.AddDays(-60);
-            var task = service.GetDailyTimeSeriesAsync(startDate, endDate, "GBP", "EUR");
+            var task = service.GetDailyTimeSeriesAsync(startDate, endDate, "GBP", "EUR", Language.It);
             AssertTaskRatesResponse(task);
         }
 
@@ -316,7 +317,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
             var filePath = GetTemporaryFilePath("DownloadDailyTimeSeriesFileTest.csv");
             var endDate = GetDateOfPreviousMonth();
             var startDate = endDate.AddDays(-60);
-            service.DownloadDailyTimeSeriesFile(Model.FileFormat.Csv, filePath, startDate, endDate, "GBP", "EUR");
+            service.DownloadDailyTimeSeriesFile(Model.FileFormat.Csv, filePath, startDate, endDate, "GBP", "EUR", Language.It);
             AssertFile(filePath);
         }
 
@@ -327,7 +328,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
             var filePath = GetTemporaryFilePath("DownloadDailyTimeSeriesFileAsyncTest.csv");
             var endDate = GetDateOfPreviousMonth();
             var startDate = endDate.AddDays(-60);
-            var task = service.DownloadDailyTimeSeriesFileAsync(Model.FileFormat.Csv, filePath, startDate, endDate, "GBP", "EUR");
+            var task = service.DownloadDailyTimeSeriesFileAsync(Model.FileFormat.Csv, filePath, startDate, endDate, "GBP", "EUR", Language.It);
             AssertTaskDownloadFile(filePath, task);
         }
 
@@ -337,7 +338,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
             var service = RestServiceFactory.Create();
             var endDate = GetDateOfPreviousMonth();
             var startDate = endDate.AddMonths(-8);
-            var rates = service.GetMonthlyTimeSeries(startDate.Month, startDate.Year, endDate.Month, endDate.Year, "GBP", "EUR");
+            var rates = service.GetMonthlyTimeSeries(startDate.Month, startDate.Year, endDate.Month, endDate.Year, "GBP", "EUR", Language.It);
             AssertValidRatesResponse(rates);
         }
 
@@ -347,7 +348,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
             var service = RestServiceFactory.Create();
             var endDate = GetDateOfPreviousMonth();
             var startDate = endDate.AddMonths(-8);
-            var task = service.GetMonthlyTimeSeriesAsync(startDate.Month, startDate.Year, endDate.Month, endDate.Year, "GBP", "EUR");
+            var task = service.GetMonthlyTimeSeriesAsync(startDate.Month, startDate.Year, endDate.Month, endDate.Year, "GBP", "EUR", Language.It);
             AssertTaskRatesResponse(task);
         }
 
@@ -358,7 +359,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
             var filePath = GetTemporaryFilePath("DownloadMonthlyTimeSeriesFileTest.csv");
             var endDate = GetDateOfPreviousMonth();
             var startDate = endDate.AddMonths(-8);
-            service.DownloadMonthlyTimeSeriesFile(Model.FileFormat.Csv, filePath, startDate.Month, startDate.Year, endDate.Month, endDate.Year, "GBP", "EUR");
+            service.DownloadMonthlyTimeSeriesFile(Model.FileFormat.Csv, filePath, startDate.Month, startDate.Year, endDate.Month, endDate.Year, "GBP", "EUR", Language.It);
             AssertFile(filePath);
         }
 
@@ -369,7 +370,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
             var filePath = GetTemporaryFilePath("DownloadMonthlyTimeSeriesFileAsyncTest.csv");
             var endDate = GetDateOfPreviousMonth();
             var startDate = endDate.AddMonths(-8);
-            var task = service.DownloadMonthlyTimeSeriesFileAsync(Model.FileFormat.Csv, filePath, startDate.Month, startDate.Year, endDate.Month, endDate.Year, "GBP", "EUR");
+            var task = service.DownloadMonthlyTimeSeriesFileAsync(Model.FileFormat.Csv, filePath, startDate.Month, startDate.Year, endDate.Month, endDate.Year, "GBP", "EUR", Language.It);
             AssertTaskDownloadFile(filePath, task);
         }
 
@@ -379,7 +380,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
             var service = RestServiceFactory.Create();
             var endDate = GetDateOfPreviousMonth();
             var startDate = endDate.AddYears(-10);
-            var rates = service.GetAnnualTimeSeries(startDate.Year, endDate.Year, "GBP", "EUR");
+            var rates = service.GetAnnualTimeSeries(startDate.Year, endDate.Year, "GBP", "EUR", Language.It);
             AssertValidRatesResponse(rates);
         }
 
@@ -389,7 +390,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
             var service = RestServiceFactory.Create();
             var endDate = GetDateOfPreviousMonth();
             var startDate = endDate.AddYears(-10);
-            var task = service.GetAnnualTimeSeriesAsync(startDate.Year, endDate.Year, "GBP", "EUR");
+            var task = service.GetAnnualTimeSeriesAsync(startDate.Year, endDate.Year, "GBP", "EUR", Language.It);
             AssertTaskRatesResponse(task);
         }
 
@@ -400,7 +401,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
             var filePath = GetTemporaryFilePath("DownloadAnnualTimeSeriesFileTest.csv");
             var endDate = GetDateOfPreviousMonth();
             var startDate = endDate.AddYears(-10);
-            service.DownloadAnnualTimeSeriesFile(Model.FileFormat.Csv, filePath, startDate.Year, endDate.Year, "GBP", "EUR");
+            service.DownloadAnnualTimeSeriesFile(Model.FileFormat.Csv, filePath, startDate.Year, endDate.Year, "GBP", "EUR", Language.It);
             AssertFile(filePath);
         }
 
@@ -411,7 +412,7 @@ namespace BankOfItaly.ExchangeRate.Client.Tests
             var filePath = GetTemporaryFilePath("DownloadAnnualTimeSeriesFileAsyncTest.csv");
             var endDate = GetDateOfPreviousMonth();
             var startDate = endDate.AddYears(-10);
-            var task = service.DownloadAnnualTimeSeriesFileAsync(Model.FileFormat.Csv, filePath, startDate.Year, endDate.Year, "GBP", "EUR");
+            var task = service.DownloadAnnualTimeSeriesFileAsync(Model.FileFormat.Csv, filePath, startDate.Year, endDate.Year, "GBP", "EUR", Language.It);
             AssertTaskDownloadFile(filePath, task);
         }
     }
